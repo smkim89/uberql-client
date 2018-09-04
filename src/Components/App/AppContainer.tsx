@@ -1,16 +1,9 @@
 import React from "react";
 import { graphql } from "react-apollo";
-import reset from "styled-reset";
 import theme from "../../theme";
-import { injectGlobal, ThemeProvider } from "../../typed-components";
+import { ThemeProvider } from "../../typed-components";
 import AppPresenter from "./AppPresenter";
 import { IS_LOGGED_IN } from "./AppQueries";
-
-// 아래와 같이 설정하면 no-unused-expression 넘어감.
-// tslint:disable-next-line
-injectGlobal`
-  ${reset}
-`;
 
 
 const AppContainer = ({ data }) => (

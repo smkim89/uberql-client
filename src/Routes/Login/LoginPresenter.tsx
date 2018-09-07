@@ -1,5 +1,6 @@
 import React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import Helmet from "react-helmet";
+import { Link, RouteComponentProps } from "react-router-dom";
 import bgImage from "../../images/bg.png";
 import styled from "../../typed-components";
  const Container = styled.div`
@@ -53,21 +54,28 @@ import styled from "../../typed-components";
  interface IProps extends RouteComponentProps<any> {}
  const OutHomePresenter: React.SFC<IProps> = () => (
   <Container>
+    <Helmet>
+      <title>Suttle Login</title>
+    </Helmet>
     <Header>
       <Logo>
         <Title>Shuttle</Title>
       </Logo>
     </Header>
     <Footer>
+      <Link to = "/phone-login" >
       <PhoneLogin>
         <Subtitle>Get moving with Shuttle</Subtitle>
         <FakeInput>
-          🇰🇷 +82 <Grey>Enter your mobile Number</Grey>
+          🇰🇷 +82 <Grey>전화 번호를 입력해주세요.</Grey>
         </FakeInput>
       </PhoneLogin>
+      </Link>
+      <Link to = "/social-login" >
       <SocialLogin>
         <SocialLink>Or connect with social</SocialLink>
       </SocialLogin>
+      </Link>
     </Footer>
   </Container>
 );

@@ -47,14 +47,23 @@ const Button = styled.button`
   right: 50px;
   cursor: pointer;
 `;
-const PhoneLoginPresenter = () => (
+
+interface IProps {
+  countryCode: string;
+  phoneNumber: string;
+}
+
+const PhoneLoginPresenter : React.SFC<IProps> = ({
+  countryCode,
+  phoneNumber
+}) =>  (
   <Container>
     <Helmet>
       <title>Phone Login | Suttle</title>
     </Helmet>
     <BackArrowExtended backTo={"/"} />
     <Title>전화번호를 입력해 주세요.</Title>
-    <CountrySelect>
+    <CountrySelect  value={countryCode}>
       {countries.map((country, index) => (
         <CountryOption key={index} value={country.dial_code}>
           {country.flag} {country.name} ({country.dial_code})
@@ -62,7 +71,7 @@ const PhoneLoginPresenter = () => (
       ))}
     </CountrySelect>
     <Form>
-      <Input placeholder={"010 1234 4567"} />
+      <Input placeholder={"010 1234 4567"} value={phoneNumber} />
       <Button>
         <svg
           xmlns="http://www.w3.org/2000/svg"

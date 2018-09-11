@@ -7,7 +7,6 @@ interface IState {
   countryCode: string;
   phoneNumber: string;
 }
-
 class PhoneLoginContainer extends React.Component<
   RouteComponentProps<any>,
   IState

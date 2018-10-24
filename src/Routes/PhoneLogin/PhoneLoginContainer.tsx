@@ -1,10 +1,13 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
+import { toast } from "react-toastify";
 import PhoneLoginPresenter from "./PhoneLoginPresenter";
-
-
-
-
+const options = {
+  
+  position: toast.POSITION.BOTTOM_CENTER
+  
+  // and so on ...
+};
 interface IState {
   countryCode: string;
   phoneNumber: string;
@@ -44,7 +47,14 @@ class PhoneLoginContainer extends React.Component<
     event.preventDefault();
     const { countryCode, phoneNumber } = this.state;
     // tslint:disable-next-line
-    console.log(countryCode, phoneNumber);
+    const isValid = /^\+[1-9]{1}[0-9]{7,11}$/.test(
+      `${countryCode}${phoneNumber}`
+    );
+    if (isValid) {
+      return;
+    } else {
+      toast.error("전화번호를 확인해 주세요.", options);
+    }
   };
 }
 
